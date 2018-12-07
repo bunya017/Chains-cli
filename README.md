@@ -10,7 +10,7 @@ Clone [brokenChains](https://github.com/bunya017/brokenChains) and follow
 the setup instructions.
 ```
 
-### Chains-cli
+### brokenChains-cli
 ``` bash
 # install dependencies
 npm install
