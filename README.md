@@ -1,6 +1,6 @@
 # Chains-cli
 
-> A web client for [brokenChains](https://github.com/bunya017/brokenChains) built with Vue.js.
+> A frontend for [brokenChains](https://github.com/bunya017/brokenChains) built with Vue.js.
 
 ## Build Setup
 
