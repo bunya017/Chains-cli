@@ -1,4 +1,4 @@
-# Chains-cli
+# brokenChains-Cli
 
 > A frontend client for [brokenChains](https://github.com/bunya017/brokenChains) built with Vue.js.
 
