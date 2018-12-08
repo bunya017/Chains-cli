@@ -51,7 +51,7 @@ export default {
       return "";
     },
     fetchHabits: function() {
-      this.$http.get('http://127.0.0.1:8000/api/habits', {headers: {'Authorization': 'Token '+this.authToken,}})
+      this.$http.get('habits/', {headers: {'Authorization': 'Token '+this.authToken,}})
         .then(function(response){
           this.habits = response.body;
         });

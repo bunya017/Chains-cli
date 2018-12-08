@@ -30,7 +30,7 @@ export default {
         username: this.user.username,
         password: this.user.password
       }
-      this.$http.post('http://127.0.0.1:8000/api-token-auth/', loginUser)
+      this.$http.post('api-token-auth/', loginUser)
         .then(function(response){
           document.cookie = "brokenChainsAuthToken=" + response.body.token +";";
       });

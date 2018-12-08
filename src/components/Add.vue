@@ -52,7 +52,7 @@ export default {
           stop_date: this.habit.stop_date
         }
 
-        this.$http.post('http://127.0.0.1:8000/api/habits/',
+        this.$http.post('habits/',
           newHabit,
           {
             headers: {

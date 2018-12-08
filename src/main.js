@@ -10,6 +10,7 @@ import './../node_modules/bootstrap/dist/js/bootstrap.min.js'
 
 Vue.config.productionTip = false
 Vue.use(vueResource)
+Vue.http.options.root = 'http://127.0.0.1:8000/api';
 
 /* eslint-disable no-new */
 new Vue({
