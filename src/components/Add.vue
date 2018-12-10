@@ -15,7 +15,7 @@
         <label>Stop date <small class="font-italic text-danger">(required)</small></label>
         <input type="date" class="form-control" required="" v-model="habit.stop_date">
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-outline-dark">Submit</button>
     </form>
   </div>
 </template>

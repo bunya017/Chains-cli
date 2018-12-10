@@ -12,7 +12,7 @@
           <label>Password:</label>
           <input type="password" class="form-control" placeholder="Password" v-model="user.password">
         </div>
-        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+        <button type="submit" class="btn btn-outline-dark btn-lg">Login</button>
       </form>
     </div>
   </div>
@@ -41,6 +41,7 @@ export default {
         .then(
           (response) => {
             document.cookie = "brokenChainsAuthToken=" + response.body.token;
+            this.router.push({path: '/habits'});
           },
           (error) => {
             this.$router.push({path: '/login', query: {alert: error.body.non_field_errors[0]}})

@@ -10,13 +10,13 @@
         </div>
         <div class="form-group">
           <label>Email:</label>
-          <input type="text" class="form-control" placeholder="Enter a valid email address" v-model="user.username">
+          <input type="text" class="form-control" placeholder="Enter a valid email address" v-model="user.email">
         </div>
         <div class="form-group">
           <label>Password:</label>
           <input type="password" class="form-control" placeholder="Password" v-model="user.password">
         </div>
-        <button type="submit" class="btn btn-primary btn-lg">Signup</button>
+        <button type="submit" class="btn btn-outline-dark btn-lg">Signup</button>
       </form>
     </div>
   </div>
@@ -30,22 +30,41 @@ export default {
     return {
       user: {},
       alert: '',
+      csrfToken: this.getCookie('csrftoken'),
     }
   },
   components: {
     Alert
   },
   methods: {
+    getCookie: function(cookieName) {
+      var name = cookieName + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0; i<ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1);
+          if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+      }
+      return "";
+    },
     registerUser: function() {
       let regUser = {
         username: this.user.username,
         email: this.user.email,
         password: this.user.password,
       }
-      this.$http.post('signup/', regUser)
-        .then(
+      this.$http.post('users/signup/',
+        regUser,
+        {
+          headers: {
+            'X-CSRFToken': this.csrfToken,
+          }
+        }).then(
           (response) => {
-            console.log(response.body);
+            this.$router.push({path: '/success'});
+          },
+          (error) => {
+            this.$router.push({path: '/signup', query: {alert: error.body.non_field_errors[0]}})
           }
       );
     },
