@@ -29,7 +29,7 @@ new Vue({
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" v-if="this.getCookie()">
               <li class="nav-item">
                 <router-link to="/habits" class="nav-link">Habits</router-link>
               </li>
@@ -37,9 +37,12 @@ new Vue({
                 <router-link to="/about" class="nav-link">About</router-link>
               </li>
             </ul>
-            <ul class="navbar-nav ml-auto" v-if="!this.getCookie()">
+            <ul class="navbar-nav ml-auto" v-else>
               <li class="nav-item">
                 <router-link to="/login" class="nav-link">Login</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/signup" class="nav-link">Signup</router-link>
               </li>
             </ul>
           </div>
