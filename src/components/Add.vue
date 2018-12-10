@@ -59,9 +59,11 @@ export default {
               'Authorization': this.authToken,
               'X-CSRFToken': this.csrfToken,
             }
-          }).then(function(response){
-            this.$router.push({path: '/habits', query: {alert: 'Habit Created'}});
-          });
+          }).then(
+            (response) => {
+              this.$router.push({path: '/habits', query: {alert: 'Habit Created'}});
+            }
+        );
       }
     }
   },

@@ -60,10 +60,12 @@ export default {
       return "";
     },
     fetchHabit: function(id) {
-      this.$http.get('habits/'+id+'/', {headers: {'Authorization': 'Token '+this.authToken,}})
-        .then(function(response){
-          this.habit = response.body;
-        });
+      this.$http.get('habits/'+ id +'/', {headers: {'Authorization': 'Token '+this.authToken,}})
+        .then(
+          (response) => {
+            this.habit = response.body;
+          }
+      );
     },
   },
   created: function() {

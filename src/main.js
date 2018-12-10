@@ -17,7 +17,7 @@ new Vue({
   router,
   data: function() {
     return {
-      authToken: this.getCookie('brokenChainsAuthToken')
+      //authToken: this.getCookie('brokenChainsAuthToken')
     }
   },
   template: `
@@ -37,7 +37,7 @@ new Vue({
                 <router-link to="/about" class="nav-link">About</router-link>
               </li>
             </ul>
-            <ul class="navbar-nav ml-auto" v-if="!authToken">
+            <ul class="navbar-nav ml-auto" v-if="!this.getCookie()">
               <li class="nav-item">
                 <router-link to="/login" class="nav-link">Login</router-link>
               </li>
@@ -49,8 +49,8 @@ new Vue({
     </div>
   `,
   methods: {
-    getCookie: function(cookieName) {
-      var name = cookieName + "=";
+    getCookie: function() {
+      var name = 'brokenChainsAuthToken' + "=";
       var ca = document.cookie.split(';');
       for(var i=0; i<ca.length; i++) {
           var c = ca[i];
@@ -59,5 +59,8 @@ new Vue({
       }
       return "";
     },
+  },
+  updated: function() {
+    this.getCookie()
   }
 }).$mount('#app')
