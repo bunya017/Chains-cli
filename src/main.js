@@ -4,17 +4,24 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import vueResource from 'vue-resource'
+import { sync } from 'vuex-router-sync'
 import './../node_modules/jquery/dist/jquery.min.js'
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './../node_modules/bootstrap/dist/js/bootstrap.min.js'
+import store from '@/store/store'
 
 Vue.config.productionTip = false
+
 Vue.use(vueResource)
+
 Vue.http.options.root = 'http://127.0.0.1:8000/api';
+
+sync(store, router)
 
 /* eslint-disable no-new */
 new Vue({
   router,
+  store,
   data: function() {
     return {
       //authToken: this.getCookie('brokenChainsAuthToken')
@@ -24,12 +31,12 @@ new Vue({
     <div id='app'>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container">
-          <a class="navbar-brand" href="/">brokenChains</a>
+          <router-link to="/" class="navbar-brand">brokenChains</router-link>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav" v-if="this.getCookie()">
+            <ul class="navbar-nav" v-if="$store.state.token">
               <li class="nav-item">
                 <router-link to="/habits" class="nav-link">Habits</router-link>
               </li>
