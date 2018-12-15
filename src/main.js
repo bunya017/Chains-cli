@@ -24,7 +24,6 @@ new Vue({
   store,
   data: function() {
     return {
-      authToken: this.getAuthToken()
     }
   },
   template: `
@@ -36,12 +35,17 @@ new Vue({
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav" v-if="authToken">
+            <ul class="navbar-nav" v-show="this.getAuthToken()">
               <li class="nav-item">
                 <router-link to="/habits" class="nav-link">Habits</router-link>
               </li>
               <li class="nav-item">
                 <router-link to="/about" class="nav-link">About</router-link>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto" v-if="this.getAuthToken()">
+              <li class="nav-item" @click="logout">
+                <p class="nav-link btn">Logout</p>
               </li>
             </ul>
             <ul class="navbar-nav ml-auto" v-else>
@@ -62,5 +66,15 @@ new Vue({
     getAuthToken: function() {
       return localStorage.getItem('auth_token')
     },
+    removeAuthToken: function() {
+      return localStorage.removeItem('auth_token')
+    },
+    logout: function() {
+      this.removeAuthToken()
+      return this.$router.push({path: '/login'})
+    }
   },
+  updated: function() {
+    this.getAuthToken()
+  }
 }).$mount('#app')
