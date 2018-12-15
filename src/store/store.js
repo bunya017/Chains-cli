@@ -12,7 +12,9 @@ export default new Vuex.Store({
   state: {
     token: null,
     loginError: null,
-    signupError: null,
+    usernameError: null,
+    passwordError: null,
+    emailError: null,
   },
   mutations: {
     setToken (state, token){
@@ -24,6 +26,22 @@ export default new Vuex.Store({
     dismissLoginError (state){
       state.loginError = null
     },
+    setSignupError (state, message){
+      if(message.username) {
+        state.usernameError = message.username[0]
+      }
+      if(message.email) {
+        state.emailError = message.email
+      }
+      if(message.password) {
+        state.passwordError = message.password[0]
+      }
+    },
+    dismissSignupError (state){
+      state.usernameError = null
+      state.emailError = null
+      state.passwordError = null
+    },
   },
   actions: {
     setToken ({commit}, token) {
@@ -32,8 +50,8 @@ export default new Vuex.Store({
     setLoginError ({commit}, message) {
       commit('setLoginError', message)
     },
-    //dismissLoginError ({commit}) {
-      //commit('dismissLoginError')
-    //},
+    setSignupError ({commit}, message) {
+      commit('setSignupError', message)
+    },
   }
 })

@@ -7,16 +7,19 @@
         <div class="form-group">
           <label>Username:</label>
           <input type="text" class="form-control" placeholder="Enter username" v-model="user.username">
+          <small class="form-text text-danger ml-4" v-if="usernameError">{{ usernameError }}</small>
         </div>
         <div class="form-group">
           <label>Email:</label>
-          <input type="text" class="form-control" placeholder="Enter a valid email address" v-model="user.email">
+          <input type="email" class="form-control" placeholder="Enter a valid email address" required="" v-model="user.email">
+          <small class="form-text text-danger ml-4" v-if="emailError">{{ emailError }}</small>
         </div>
         <div class="form-group">
           <label>Password:</label>
-          <input type="password" class="form-control" placeholder="Password" v-model="user.password">
+          <input type="password" class="form-control" placeholder="Password" minlength=8 required="" v-model="user.password">
+          <small class="form-text text-danger ml-4" v-if="passwordError">{{ passwordError }}</small>
         </div>
-        <button type="submit" class="btn btn-outline-dark btn-lg">Signup</button>
+        <button type="submit" class="btn btn-outline-dark btn-lg" required="" @click="dismissErrors">Signup</button>
       </form>
     </div>
   </div>
@@ -61,21 +64,28 @@ export default {
           }
         }).then(
           (response) => {
-            this.$router.push({path: '/success'});
+            console.log(response.body)
           },
           (error) => {
-            this.$router.push({path: '/signup', query: {alert: error.body.non_field_errors[0]}})
+            this.$store.dispatch('setSignupError', error.body)
           }
-      );
+      )
     },
-  },
-  /**
-  created: function() {
-    if(this.$route.query.alert){
-      this.alert = this.$route.query.alert;
+    dismissErrors: function() {
+      return this.$store.commit('dismissSignupError')
     }
   },
-  **/
+  computed: {
+    usernameError: function() {
+      return this.$store.state.usernameError
+    },
+    emailError: function() {
+      return this.$store.state.emailError
+    },
+    passwordError: function() {
+      return this.$store.state.passwordError
+    }
+  }
 }
 </script>
 

@@ -45,7 +45,6 @@ export default {
           },
           (error) => {
             this.$store.dispatch('setLoginError', error.body.non_field_errors[0])
-            //this.$router.push({path: '/login', query: {alert: error.body.non_field_errors[0]}})
           }
       );
     },
