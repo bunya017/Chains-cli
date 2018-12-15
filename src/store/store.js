@@ -10,16 +10,12 @@ export default new Vuex.Store({
     paths: ['habits']
   })],
   state: {
-    token: null,
     loginError: null,
     usernameError: null,
     passwordError: null,
     emailError: null,
   },
   mutations: {
-    setToken (state, token){
-      state.token = token
-    },
     setLoginError (state, message){
       state.loginError = message
     },
@@ -44,9 +40,6 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    setToken ({commit}, token) {
-      commit('setToken', token)
-    },
     setLoginError ({commit}, message) {
       commit('setLoginError', message)
     },

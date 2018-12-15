@@ -40,7 +40,7 @@ export default {
       this.$http.post('api-token-auth/', loginUser)
         .then(
           (response) => {
-            this.$store.dispatch('setToken', response.token)
+            localStorage.setItem('auth_token', response.body.token)
             this.$router.push({path: '/habits'})
           },
           (error) => {

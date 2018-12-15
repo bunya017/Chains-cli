@@ -64,7 +64,8 @@ export default {
           }
         }).then(
           (response) => {
-            console.log(response.body)
+            localStorage.setItem('auth_token', response.body.token)
+            this.$router.push({path: '/habits'})
           },
           (error) => {
             this.$store.dispatch('setSignupError', error.body)

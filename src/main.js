@@ -24,7 +24,7 @@ new Vue({
   store,
   data: function() {
     return {
-      //authToken: this.getCookie('brokenChainsAuthToken')
+      authToken: this.getAuthToken()
     }
   },
   template: `
@@ -36,7 +36,7 @@ new Vue({
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav" v-if="$store.state.token">
+            <ul class="navbar-nav" v-if="authToken">
               <li class="nav-item">
                 <router-link to="/habits" class="nav-link">Habits</router-link>
               </li>
@@ -59,18 +59,8 @@ new Vue({
     </div>
   `,
   methods: {
-    getCookie: function() {
-      var name = 'brokenChainsAuthToken' + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0; i<ca.length; i++) {
-          var c = ca[i];
-          while (c.charAt(0)==' ') c = c.substring(1);
-          if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-      }
-      return "";
+    getAuthToken: function() {
+      return localStorage.getItem('auth_token')
     },
   },
-  updated: function() {
-    this.getCookie()
-  }
 }).$mount('#app')

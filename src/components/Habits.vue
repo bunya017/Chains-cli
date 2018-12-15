@@ -35,22 +35,15 @@ export default {
     return {
       habits: [],
       alert: '',
-      authToken: this.getCookie('brokenChainsAuthToken'),
+      authToken: this.getAuthToken(),
     }
   },
   components: {
     Alert
   },
   methods: {
-    getCookie: function(cookieName) {
-      var name = cookieName + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0; i<ca.length; i++) {
-          var c = ca[i];
-          while (c.charAt(0)==' ') c = c.substring(1);
-          if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-      }
-      return "";
+    getAuthToken: function() {
+      return localStorage.getItem('auth_token')
     },
     fetchHabits: function() {
       this.$http.get('habits/', {headers: {'Authorization': 'Token '+this.authToken,}})
