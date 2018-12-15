@@ -2,7 +2,7 @@
   <div class="login container">
     <div class="col-md-6 mx-auto card card-body mt-3">
       <h1 class="pb-3 text-center">Login</h1>
-      <Alert v-if="alert" v-bind:message="alert" v-bind:class="'alert-danger'" />
+      <Alert v-if="message" :message="message" :class="'alert-danger'" :dismiss="dismissError" />
       <form v-on:submit.prevent="getAuthToken">
         <div class="form-group">
           <label>Username:</label>
@@ -40,20 +40,24 @@ export default {
       this.$http.post('api-token-auth/', loginUser)
         .then(
           (response) => {
-            document.cookie = "brokenChainsAuthToken=" + response.body.token;
-            this.router.push({path: '/habits'});
+            this.$store.dispatch('setToken', response.token)
+            this.$router.push({path: '/habits'})
           },
           (error) => {
-            this.$router.push({path: '/login', query: {alert: error.body.non_field_errors[0]}})
+            this.$store.dispatch('setLoginError', error.body.non_field_errors[0])
+            //this.$router.push({path: '/login', query: {alert: error.body.non_field_errors[0]}})
           }
       );
     },
+    dismissError: function() {
+      return this.$store.commit('dismissLoginError')
+    },
   },
-  created: function() {
-    if(this.$route.query.alert){
-      this.alert = this.$route.query.alert;
+  computed: {
+    message: function() {
+      return this.$store.state.loginError
     }
-  },
+  }
 }
 </script>
 
