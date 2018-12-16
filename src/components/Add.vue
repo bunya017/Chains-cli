@@ -27,7 +27,7 @@ export default {
   data: function() {
     return {
       habit: {},
-      authToken: 'Token ' + this.getCookie('brokenChainsAuthToken'),
+      authToken: this.getAuthToken(),
       csrfToken: this.getCookie('csrftoken'),
     }
   },
@@ -41,6 +41,9 @@ export default {
           if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
       }
       return "";
+    },
+    getAuthToken: function() {
+      return localStorage.getItem('auth_token')
     },
     addNewHabit: function() {
       if (!this.habit.name || !this.habit.goal || !this.habit.stop_date) {
@@ -56,7 +59,7 @@ export default {
           newHabit,
           {
             headers: {
-              'Authorization': this.authToken,
+              'Authorization': 'Token ' + this.authToken,
               'X-CSRFToken': this.csrfToken,
             }
           }).then(
