@@ -6,8 +6,6 @@ import Login from '@/components/Login'
 import Add from '@/components/Add'
 import Signup from '@/components/Signup'
 import HabitDetail from '@/components/HabitDetail'
-import AccountCreationSuccess from '@/components/AccountCreationSuccess'
-
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +18,5 @@ export default new Router({
     {path: '/login', name: 'login', component: Login},
     {path: '/add', name: 'add', component: Add},
     {path: '/signup', name: 'signup', component: Signup},
-    {path: '/success', name: 'success', component: AccountCreationSuccess},
   ]
 })

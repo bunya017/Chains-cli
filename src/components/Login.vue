@@ -3,7 +3,7 @@
     <div class="col-md-6 mx-auto card card-body mt-3">
       <h1 class="pb-3 text-center">Login</h1>
       <Alert v-if="message" :message="message" :class="'alert-danger'" :dismiss="dismissLoginError" />
-      <form v-on:submit.prevent="getAuthToken">
+      <form v-on:submit.prevent="setAuthToken">
         <div class="form-group">
           <label>Username:</label>
           <input type="text" class="form-control" placeholder="Enter username" required="" v-model="user.username">
@@ -27,14 +27,13 @@ export default {
   data: function() {
     return {
       user: {},
-      alert: '',
     }
   },
   components: {
     Alert
   },
   methods: {
-    getAuthToken: function() {
+    setAuthToken: function() {
       let loginUser = {
         username: this.user.username,
         password: this.user.password,
