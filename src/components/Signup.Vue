@@ -6,20 +6,20 @@
       <form v-on:submit.prevent="registerUser">
         <div class="form-group">
           <label>Username:</label>
-          <input type="text" class="form-control" placeholder="Enter username" v-model="user.username">
-          <small class="form-text text-danger ml-4" v-if="usernameError">{{ usernameError }}</small>
+          <input type="text" class="form-control" placeholder="Enter username" required="" v-model="user.username">
+          <small class="form-text text-danger ml-4 font-weight-bold" v-if="usernameError">{{ usernameError }}</small>
         </div>
         <div class="form-group">
           <label>Email:</label>
           <input type="email" class="form-control" placeholder="Enter a valid email address" required="" v-model="user.email">
-          <small class="form-text text-danger ml-4" v-if="emailError">{{ emailError }}</small>
+          <small class="form-text text-danger ml-4 font-weight-bold" v-if="emailError">{{ emailError }}</small>
         </div>
         <div class="form-group">
           <label>Password:</label>
           <input type="password" class="form-control" placeholder="Password" minlength=8 required="" v-model="user.password">
-          <small class="form-text text-danger ml-4" v-if="passwordError">{{ passwordError }}</small>
+          <small class="form-text text-danger ml-4 font-weight-bold" v-if="passwordError">{{ passwordError }}</small>
         </div>
-        <button type="submit" class="btn btn-outline-dark btn-lg" required="" @click="dismissErrors">Signup</button>
+        <button type="submit" class="btn btn-outline-dark btn-lg" required="" @click="dismissSignupErrors">Signup</button>
       </form>
     </div>
   </div>
@@ -72,7 +72,7 @@ export default {
           }
       )
     },
-    dismissErrors: function() {
+    dismissSignupErrors: function() {
       return this.$store.commit('dismissSignupError')
     }
   },

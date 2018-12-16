@@ -11,9 +11,11 @@ export default new Vuex.Store({
   })],
   state: {
     loginError: null,
-    usernameError: null,
-    passwordError: null,
-    emailError: null,
+    usernameLoginError: null,
+    passwordLoginError: null,
+    usernameSignupError: null,
+    passwordSignupError: null,
+    emailSignupError: null,
   },
   mutations: {
     setLoginError (state, message){
@@ -24,19 +26,31 @@ export default new Vuex.Store({
     },
     setSignupError (state, message){
       if(message.username) {
-        state.usernameError = message.username[0]
+        state.usernameSignupError = message.username[0]
       }
       if(message.email) {
-        state.emailError = message.email
+        state.emailSignupError = message.email
       }
       if(message.password) {
-        state.passwordError = message.password[0]
+        state.passwordSignupError = message.password[0]
       }
     },
     dismissSignupError (state){
-      state.usernameError = null
-      state.emailError = null
-      state.passwordError = null
+      state.usernameSignupError = null
+      state.emailSignupError = null
+      state.passwordSignupError = null
+    },
+    setLoginFieldError (state, message){
+      if(message.username) {
+        state.usernameLoginError = message.username[0]
+      }
+      if(message.password) {
+        state.passwordLoginError = message.password[0]
+      }
+    },
+    dismissLoginFieldError (state){
+      state.usernameLoginError = null
+      state.passwordLoginError = null
     },
   },
   actions: {
@@ -45,6 +59,9 @@ export default new Vuex.Store({
     },
     setSignupError ({commit}, message) {
       commit('setSignupError', message)
+    },
+    setLoginFieldError ({commit}, message) {
+      commit('setLoginFieldError', message)
     },
   }
 })
