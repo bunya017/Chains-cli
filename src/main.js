@@ -28,7 +28,7 @@ new Vue({
   },
   template: `
     <div id='app'>
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <nav class="navbar navbar-expand-md navbar-light bg-light py-1">
         <div class="container">
           <router-link to="/" class="navbar-brand">brokenChains</router-link>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@ new Vue({
             </ul>
             <ul class="navbar-nav ml-auto" v-if="this.getAuthToken()">
               <li class="nav-item" @click="logout">
-                <p class="nav-link btn">Logout</p>
+                <a class="nav-link btn" style="cursor: pointer;">Logout</a>
               </li>
             </ul>
             <ul class="navbar-nav ml-auto" v-else>
