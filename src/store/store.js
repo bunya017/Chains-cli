@@ -16,6 +16,9 @@ export default new Vuex.Store({
     usernameSignupError: null,
     passwordSignupError: null,
     emailSignupError: null,
+    nameAddError: null,
+    goalAddError: null,
+    habitExistError: null,
   },
   mutations: {
     setLoginError (state, message){
@@ -52,6 +55,24 @@ export default new Vuex.Store({
       state.usernameLoginError = null
       state.passwordLoginError = null
     },
+    setAddError (state, message){
+      if(message.name) {
+        state.nameAddError = message.name[0]
+      }
+      if(message.goal) {
+        state.goalAddError = message.goal[0]
+      }
+    },
+    dismissAddError (state){
+      state.nameAddError = null
+      state.goalAddError = null
+    },
+    setHabitExistError (state, message){
+      state.habitExistError = message
+    },
+    dismissHabitExistError (state, message){
+      state.habitExistError = null
+    }
   },
   actions: {
     setLoginError ({commit}, message) {
@@ -63,5 +84,11 @@ export default new Vuex.Store({
     setLoginFieldError ({commit}, message) {
       commit('setLoginFieldError', message)
     },
+    setAddError ({commit}, message) {
+      commit('setAddError', message)
+    },
+    setHabitExistError ({commit}, message) {
+      commit('setHabitExistError', message)
+    }
   }
 })
