@@ -19,6 +19,7 @@ const router = new Router({
       name: 'habits',
       component: Habits,
       meta: {
+        title: 'Habits | Broken Chains',
         requiresAuth: true,
       }
     },
@@ -27,6 +28,7 @@ const router = new Router({
       name: 'habitDetail',
       component: HabitDetail,
       meta: {
+        title: 'Habits | Broken Chains',
         requiresAuth: true,
       }
     },
@@ -35,6 +37,7 @@ const router = new Router({
       name: 'addHabit',
       component: Add,
       meta: {
+        title: 'New Habit | Broken Chains',
         requiresAuth: true,
       }
     },
@@ -43,6 +46,7 @@ const router = new Router({
       name: 'about',
       component: About,
       meta: {
+        title: 'About | Broken Chains',
         requiresAuth: false,
       }
     },
@@ -51,6 +55,7 @@ const router = new Router({
       name: 'login',
       component: Login,
       meta: {
+        title: 'Login | Broken Chains',
         requiresAuth: false,
       }
     },
@@ -59,6 +64,7 @@ const router = new Router({
       name: 'signup',
       component: Signup,
       meta: {
+        title: 'Signup | Broken Chains',
         requiresAuth: false,
       }
     },
@@ -67,6 +73,7 @@ const router = new Router({
       name: 'notFound',
       component: NotFound,
       meta: {
+        title: 'Not Found | Broken Chains',
         requiresAuth: false,
       }
     },
@@ -82,6 +89,10 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+})
+
+router.afterEach((to) => {
+document.title = to.meta.title;
 })
 
 export default router
