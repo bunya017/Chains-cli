@@ -71,6 +71,7 @@ new Vue({
     },
     logout: function() {
       this.removeAuthToken()
+      localStorage.setItem('isLoggedIn', false)
       return this.$router.push({path: '/login'})
     }
   },

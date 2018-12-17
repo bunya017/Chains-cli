@@ -42,6 +42,7 @@ export default {
         .then(
           (response) => {
             localStorage.setItem('auth_token', response.body.token)
+            localStorage.setItem('isLoggedIn', true)
             this.$router.push({path: '/habits'})
           },
           (error) => {
