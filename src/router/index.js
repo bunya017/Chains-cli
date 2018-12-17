@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import Add from '@/components/Add'
 import Signup from '@/components/Signup'
 import HabitDetail from '@/components/HabitDetail'
+import NotFound from '@/components/NotFound'
 
 Vue.use(Router)
 
@@ -62,11 +63,11 @@ const router = new Router({
       }
     },
     {
-      path: '/',
-      name: 'home',
-      component: Habits,
+      path: '*',
+      name: 'notFound',
+      component: NotFound,
       meta: {
-        requiresAuth: true,
+        requiresAuth: false,
       }
     },
   ]
@@ -77,10 +78,9 @@ router.beforeEach((to, from, next) => {
     return JSON.parse(localStorage.getItem('isLoggedIn'))
   }
   if (to.meta.requiresAuth && !userAuthenticated()) {
-    next('/login');
+    next('/login')
   } else {
-    next();
-    console.log(!userAuthenticated())
+    next()
   }
 })
 
