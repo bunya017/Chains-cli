@@ -35,8 +35,8 @@ new Vue({
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav" v-show="this.getAuthToken()">
-              <li class="nav-item">
+            <ul class="navbar-nav">
+              <li class="nav-item" v-show="this.getAuthToken()">
                 <router-link to="/habits" class="nav-link">Habits</router-link>
               </li>
               <li class="nav-item">
