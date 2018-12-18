@@ -36,7 +36,12 @@ export default {
   name: 'add',
   data: function() {
     return {
-      habit: {},
+      habit: {
+        // set default to today
+        start_date: new Date().toISOString().slice(0, 10),
+        // set default to 21 days from today
+        stop_date: new Date(new Date().getTime() + (21 * 24 * 60 * 60 * 1000)).toISOString().slice(0, 10)
+      },
       authToken: this.getAuthToken(),
       csrfToken: this.getCookie('csrftoken'),
     }
