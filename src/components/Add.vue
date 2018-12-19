@@ -1,32 +1,42 @@
 <template>
   <div class="add container">
-    <form class="col-md-6 mx-auto my-3" v-on:submit.prevent="addNewHabit">
-      <h1 class="py-2 text-center">Add Habit</h1>
-      <Alert v-if="habitExist" :message="habitExist" :class="'alert-danger'" :dismiss="dismissHabitExist" />
-      <div class="form-group">
-        <label>Name <small class="font-italic text-danger">(required)</small></label>
-        <input type="text" class="form-control" placeholder="Name of new habit" v-model="habit.name">
-        <small class="ml-3 text-danger font-weight-bold" v-if="nameError">{{ nameError }}</small>
+    <div class="col-sm-8 col-md-6 mx-auto my-5">
+      <div class="card card-body shadow-lg border-0 rounded-0" style="background-color: #ebf0f3;">
+        <form class="" v-on:submit.prevent="addNewHabit">
+          <h2 class="text-center py-1">NEW HABIT</h2>
+          <Alert v-if="habitExist" :message="habitExist" :class="'alert-danger'" :dismiss="dismissHabitExist" />
+          <div class="form-group">
+            <label>Name <small class="font-italic text-danger">(required)</small></label>
+            <input type="text" class="form-control" placeholder="Name of new habit" v-model="habit.name">
+            <div class="bg-light my-1" style="border-left: 4px solid #e43545 !important;">
+              <small class="ml-3 text-danger font-weight-bold" v-if="nameError">{{ nameError }}</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Goal <small class="font-italic text-danger">(required)</small></label>
+            <input type="text" class="form-control" placeholder="Goal statement" v-model="habit.goal">
+            <div class="bg-light my-1" style="border-left: 4px solid #e43545 !important;">
+              <small class="ml-3 text-danger font-weight-bold" v-if="goalError">{{ goalError }}</small>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label>Start date <small class="font-italic">(optional)</small></label>
+              <input type="date" class="form-control" v-model="habit.start_date">
+              <small class="font-italic form-text text-muted">Set to today by default.</small>
+            </div>
+            <div class="form-group col">
+              <label>Stop date <small class="font-italic">(optional)</small></label>
+              <input type="date" class="form-control" v-model="habit.stop_date">
+              <small class="font-italic form-text text-muted">Set to 21 days from today by default.</small>
+            </div>
+          </div>
+          <div class="py-3">
+            <button type="submit" class="btn btn-info btn-lg" @click="dismissAddError">Add new habit</button>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <label>Goal <small class="font-italic text-danger">(required)</small></label>
-        <input type="text" class="form-control" placeholder="Goal statement" v-model="habit.goal">
-        <small class="ml-3 text-danger font-weight-bold" v-if="goalError">{{ goalError }}</small>
-      </div>
-      <div class="form-group">
-        <label>Start date <small class="font-italic">(optional)</small></label>
-        <input type="date" class="form-control" v-model="habit.start_date">
-        <small class="font-italic form-text text-muted">Set to today by default.</small>
-      </div>
-      <div class="form-group">
-        <label>Stop date <small class="font-italic">(optional)</small></label>
-        <input type="date" class="form-control" v-model="habit.stop_date">
-        <small class="font-italic form-text text-muted">Set to 21 days from today by default.</small>
-      </div>
-      <div class="py-3">
-        <button type="submit" class="btn btn-outline-dark" @click="dismissAddError">Submit</button>
-      </div>
-    </form>
+    </div>
   </div>
 </template>
 
