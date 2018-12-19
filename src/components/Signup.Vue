@@ -1,6 +1,6 @@
 <template>
   <div class="signup container">
-    <div class="col-md-6 mx-auto card card-body my-5 rounded-0" style="background-color: #ebf0f3;">
+    <div class="col-md-6 mx-auto card card-body my-5 rounded-0 shadow-lg" style="background-color: #ebf0f3;">
       <h1 class="pb-3 text-center">Signup</h1>
       <Alert v-if="alert" v-bind:message="alert" v-bind:class="'alert-danger'" />
       <form v-on:submit.prevent="registerUser">
