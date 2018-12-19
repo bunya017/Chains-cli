@@ -1,25 +1,25 @@
 <template>
   <div class="signup container">
-    <div class="col-md-6 mx-auto card card-body mt-3">
+    <div class="col-md-6 mx-auto card card-body my-5 rounded-0" style="background-color: #ebf0f3;">
       <h1 class="pb-3 text-center">Signup</h1>
       <Alert v-if="alert" v-bind:message="alert" v-bind:class="'alert-danger'" />
       <form v-on:submit.prevent="registerUser">
         <div class="form-group">
           <label>Username:</label>
-          <input type="text" class="form-control" placeholder="Enter username" required="" v-model="user.username">
+          <input type="text" class="form-control rounded-0" placeholder="Enter username" required="" v-model="user.username">
           <small class="form-text text-danger ml-4 font-weight-bold" v-if="usernameError">{{ usernameError }}</small>
         </div>
         <div class="form-group">
           <label>Email:</label>
-          <input type="email" class="form-control" placeholder="Enter a valid email address" required="" v-model="user.email">
+          <input type="email" class="form-control rounded-0" placeholder="Enter a valid email address" required="" v-model="user.email">
           <small class="form-text text-danger ml-4 font-weight-bold" v-if="emailError">{{ emailError }}</small>
         </div>
         <div class="form-group">
           <label>Password:</label>
-          <input type="password" class="form-control" placeholder="Password" minlength=8 required="" v-model="user.password">
+          <input type="password" class="form-control rounded-0" placeholder="Password" minlength=8 required="" v-model="user.password">
           <small class="form-text text-danger ml-4 font-weight-bold" v-if="passwordError">{{ passwordError }}</small>
         </div>
-        <button type="submit" class="btn btn-outline-dark btn-lg" required="" @click="dismissSignupErrors">Signup</button>
+        <button type="submit" class="btn btn-info btn-lg rounded-0 shadow my-4" required="" @click="dismissSignupErrors">Signup</button>
       </form>
     </div>
   </div>
