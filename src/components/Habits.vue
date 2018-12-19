@@ -1,22 +1,21 @@
 <template>
   <div class="habits container">
-    <h1 class="pt-2">My Habits</h1>
-    <hr>
-    <Alert v-if="alert" v-bind:message="alert" :class="'alert-success'" />
-    <div class="row mb-5">
-      <div class="col-md-6 card card-body mx-auto  border-dark">
-        <div class="ml-auto">
-          <router-link to="/add" class="btn btn-dark btn-lg">Add new habit</router-link>
-        </div>
-        <div class="card card-body py-0 my-2 border-dark" v-for="habit in habits">
+    <div class="col-md-8 mx-auto">
+      <div class="row align-items-center pt-5">
+        <h1 class="pt-2">My Habits</h1>
+        <span class="ml-auto"><router-link to="/add" class="btn btn-info">Add new habit</router-link></span>
+      </div>
+      <Alert v-if="alert" v-bind:message="alert" :class="'alert-success'" />
+      <div class="row my-3">
+        <div class="col card card-body ml-auto rounded-0 shadow-lg" style="background-color: #ebf0f3;" v-for="(habit, index) in habits">
           <div class="row">
-            <div class="pl-2">
-              <h3>{{ habit.name }}</h3>
-              <p>{{ habit.goal }}</p>
-              <p>{{ habit.start_date }}</p>
+            <div class="ml-2">
+              <h3 class="py-0 my-0">{{ index + 1 }}. {{ habit.name }}</h3>
+              <p class="p-0 my-0 pl-4 ml-2">{{ habit.goal }}</p>
+              <p class="p-0 my-0 pl-4 ml-2">{{ habit.start_date }}</p>
             </div>
-            <div class="ml-auto my-auto p-3">
-              <router-link class="btn btn-dark" v-bind:to="'/habits/'+habit.id">
+            <div class="ml-auto my-auto px-3">
+              <router-link class="btn btn-info" v-bind:to="'/habits/'+habit.id">
                 View
               </router-link>
             </div>
