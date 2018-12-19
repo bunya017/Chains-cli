@@ -1,11 +1,11 @@
 <template>
   <div class="habitdetail container">
-    <div class="card card-body col-md-6 mx-auto my-2 border-dark">
+    <div class="card card-body col-md-6 mx-auto my-5 border-0 rounded-0 shadow-lg" style="background-color: #ebf0f3;">
       <h1 class="py-2">{{ habit.name }}</h1>
       <p>Goal: <span class="ml-3">{{ habit.goal }}</span></p>
       <p>Start on: <span class="ml-3">{{ habit.start_date }}</span></p>
       <p>End on: <span class="ml-3">{{ habit.stop_date }}</span></p>
-      <table class="table table-bordered">
+      <table class="table table-bordered bg-white">
         <thead>
           <tr>
             <th>Weeks</th>
