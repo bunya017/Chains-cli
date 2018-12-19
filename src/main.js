@@ -28,7 +28,7 @@ new Vue({
   },
   template: `
     <div id='app'>
-      <nav class="navbar navbar-expand-md navbar-light bg-light py-1">
+      <nav class="navbar navbar-expand-md navbar-dark bg-info shadow">
         <div class="container">
           <router-link to="/" class="navbar-brand">brokenChains</router-link>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
