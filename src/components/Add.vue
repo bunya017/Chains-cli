@@ -7,14 +7,14 @@
           <Alert v-if="habitExist" :message="habitExist" :class="'alert-danger'" :dismiss="dismissHabitExist" />
           <div class="form-group">
             <label>Name <small class="font-italic text-danger">(required)</small></label>
-            <input type="text" class="form-control" placeholder="Name of new habit" v-model="habit.name">
+            <input type="text" class="form-control rounded-0" placeholder="Name of new habit" v-model="habit.name">
             <div class="bg-light my-1" style="border-left: 4px solid #e43545 !important;">
               <small class="ml-3 text-danger font-weight-bold" v-if="nameError">{{ nameError }}</small>
             </div>
           </div>
           <div class="form-group">
             <label>Goal <small class="font-italic text-danger">(required)</small></label>
-            <input type="text" class="form-control" placeholder="Goal statement" v-model="habit.goal">
+            <input type="text" class="form-control rounded-0" placeholder="Goal statement" v-model="habit.goal">
             <div class="bg-light my-1" style="border-left: 4px solid #e43545 !important;">
               <small class="ml-3 text-danger font-weight-bold" v-if="goalError">{{ goalError }}</small>
             </div>
@@ -22,17 +22,17 @@
           <div class="form-row">
             <div class="form-group col">
               <label>Start date <small class="font-italic">(optional)</small></label>
-              <input type="date" class="form-control" v-model="habit.start_date">
+              <input type="date" class="form-control rounded-0" v-model="habit.start_date">
               <small class="font-italic form-text text-muted">Set to today by default.</small>
             </div>
             <div class="form-group col">
               <label>Stop date <small class="font-italic">(optional)</small></label>
-              <input type="date" class="form-control" v-model="habit.stop_date">
+              <input type="date" class="form-control rounded-0" v-model="habit.stop_date">
               <small class="font-italic form-text text-muted">Set to 21 days from today by default.</small>
             </div>
           </div>
           <div class="py-3">
-            <button type="submit" class="btn btn-info btn-lg" @click="dismissAddError">Add new habit</button>
+            <button type="submit" class="btn btn-info btn-lg rounded-0" @click="dismissAddError">Add new habit</button>
           </div>
         </form>
       </div>
