@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="py-3">
-            <button type="submit" class="btn btn-info btn-lg rounded-0" @click="dismissAddError">Add new habit</button>
+            <button type="submit" class="btn btn-info btn-lg rounded-0 shadow" @click="dismissAddError">Add new habit</button>
           </div>
         </form>
       </div>
