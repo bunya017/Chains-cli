@@ -30,7 +30,7 @@ new Vue({
     <div id='app'>
       <nav class="navbar navbar-expand-md navbar-dark bg-info shadow">
         <div class="container">
-          <router-link to="/" class="navbar-brand">brokenChains</router-link>
+          <router-link to="/habits" class="navbar-brand">brokenChains</router-link>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
