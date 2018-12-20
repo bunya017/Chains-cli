@@ -7,7 +7,7 @@
         <ul class="list-inline" v-if="userAuthenticated()">
           <li class="list-inline-item">
             <router-link to="/habits">
-              <button class="btn btn-outline-dark border-0 p-2">
+              <button class="btn btn-info rounded-0 border-0 p-2">
                 Back to Home
               </button>
             </router-link>
@@ -16,14 +16,14 @@
         <ul class="list-inline" v-else>
           <li class="list-inline-item">
             <router-link to="/login">
-              <button class="btn btn-outline-dark border-0 p-2">
+              <button class="btn btn-info rounded-0 border-0 p-2">
                 Login
               </button>
             </router-link>
           </li>
           <li class="list-inline-item">
             <router-link to="/signup">
-              <button class="btn btn-outline-dark border-0 p-2">
+              <button class="btn btn-info rounded-0 border-0 p-2">
                 Signup
               </button>
             </router-link>
