@@ -3,23 +3,16 @@
     <div class="col-md-8 mx-auto">
       <div class="row align-items-center pt-5">
         <Alert v-if="alert" v-bind:message="alert" :class="'alert-success'" />
-        <h1 class="pt-2">My Habits</h1>
+        <h1>My Habits</h1>
         <span class="ml-auto"><router-link to="/add" class="btn btn-info rounded-0 shadow">New Habit</router-link></span>
       </div>
       <ul class="list-group shadow-lg mb-5 my-2">
         <li class="list-group-item rounded-0"  style="background-color: #ebf0f3;" v-for="(habit, index) in habits">
-          <div class="row align-items-center">
-            <div class="pl-3">
-              <h3>{{ habit.name }}</h3>
-              <p class="pl-2 my-0">{{ habit.goal }}</p>
-              <p class="pl-2 my-0">{{ habit.start_date }}</p>
-            </div>
-            <span class="ml-auto px-3">
-              <router-link class="btn btn-info rounded-0 shadow" v-bind:to="'/habits/'+habit.id">
-                View
-              </router-link>
-            </span>
-          </div>
+          <router-link class="text-dark" :to="'/habits/'+habit.id">
+            <h3>{{ habit.name }}</h3>
+            <p class="pl-2 my-0">{{ habit.goal }}</p>
+            <p class="pl-2 my-0">{{ habit.start_date }}</p>
+          </router-link>
         </li>
       </ul>
     </div>
